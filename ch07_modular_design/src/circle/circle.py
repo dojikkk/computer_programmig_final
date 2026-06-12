@@ -1,0 +1,13 @@
+pi = 3.14
+
+
+def area(radius):
+    return (radius**2) * pi
+
+
+def circumference(radius):
+    return 2 * pi * radius
+
+
+def sphere_surface(radius):
+    return 4.0 * area(radius)
