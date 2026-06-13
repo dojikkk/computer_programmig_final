@@ -65,6 +65,22 @@ def countWords(input_file, search_word):
     return num_occurrences
 
 
+def upgrade_countWords(input_file, search_word):
+    """
+    구분자들로 모두 나누고 거기를 모두 공백으로 채우고 split 써서 판단하기 여기서 count 까지 적절하게 섞어서 써주기
+    """
+    search_word = search_word.lower()
+    delimiters = ' ,;:.\n"\'()'
+    count = 0
+    for line in input_file:
+        line = line.lower()
+        for d in delimiters:          # 모든 구분자를 공백으로 통일
+            line = line.replace(d, ' ')
+        count += line.split().count(search_word)  # 쪼갠 뒤 정확히 일치하는 것만 셈
+    return count
+
+
+
 file_name, input_file = getFile()
 
 search_word = input('Enter word to search: ')
