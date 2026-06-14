@@ -50,6 +50,8 @@ class Tensor:
 
         return NotImplemented
 
+
+    # 재귀문법 활용 - self._is_number이 활성화가 끝까지 될때까지 계속 data 안의 요소들을 반복해서 풀어버린다
     def _apply_scalar(self, data, scalar, operation):
         if self._is_number(data):
             return operation(data, scalar)
@@ -58,7 +60,7 @@ class Tensor:
             self._apply_scalar(item, scalar, operation)
             for item in data
         ]
-
+    
     def _apply_pair(self, a, b, operation):
         if self._is_number(a) and self._is_number(b):
             return operation(a, b)
