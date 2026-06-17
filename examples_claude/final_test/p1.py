@@ -20,3 +20,27 @@ def deepCount(data, target):
         return deepCount(data[0], target) + deepCount(data[1:], target)
     else:
         return deepCount(data[1:], target)
+    
+
+
+
+"""
+def deepCount(data, target):
+    # base case 1: 리스트가 아니면 (= 그냥 값 하나)
+    if not isinstance(data, list):
+        return 1 if data == target else 0
+
+    # base case 2: 빈 리스트면 0
+    if data == []:
+        return 0
+
+    # recursive case: 첫 원소 + 나머지
+    if type(data[0]) == list:
+        # 첫 원소가 리스트면 → 그 안으로 들어가서 세고 + 나머지도 세기
+        return deepCount(data[0], target) + deepCount(data[1:], target)
+    elif data[0] == target:
+        return 1 + deepCount(data[1:], target)
+    else:
+        return deepCount(data[1:], target)
+
+"""

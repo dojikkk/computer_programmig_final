@@ -15,12 +15,12 @@ def move_up():
 
 def turn_left():
     # TODO
-    t.left(90)
+    t.left(15)
 
 
 def turn_right():
     # TODO
-    t.right(90)
+    t.right(15)
 
 
 def toggle_pen():
@@ -45,7 +45,7 @@ def auto_color():
     # TODO: change to a random color
     # TODO: schedule this same function to run again in 0.5s (periodic!)
     t.color(random.choice(colors))
-    w.ontimer(auto_color, 1)
+    w.ontimer(auto_color, 500) # 이거 ontimer 의 시간 단위는 ms 단위이다
 
 
 # --- wiring ---

@@ -18,15 +18,17 @@ class Account:
         - If value is negative, raise ValueError
         - Otherwise, store it normally
         """
+        ## 타입검사 항상 먼저 하기, value는 그다음
+        if not isinstance(value, (int, float)):
+            raise TypeError
         if value < 0:
             raise ValueError
-        elif not isinstance(value, (int or float)):
-            raise TypeError
         self.__balance = value
 
     def __repr__(self):
         """ e.g. Account('Ana', 100) """
-        return f"Account({self.owner}, {self.balance})"
+        # 여기서 나올때 '{}' 이렇게 해줘야함. str 이라고 나올때 "" 이렇게 나오는게 아님
+        return f"Account('{self.owner}', {self.balance})"
 
     def __eq__(self, other):
         """ True if the two Accounts have equal balance (ignore owner) """
@@ -42,7 +44,8 @@ class Account:
         """
         if isinstance(other, Account):
             return Account(self.owner, self.balance + other.balance)
-        elif isinstance(other, int or float):
+        # 이거 튜플로 바꾸어서 처리해야함, 안그러면 터짐 int or flaot 은 허용 불가
+        elif isinstance(other, (int, float)):
             return Account(self.owner, self.balance + other)
         else:
             return NotImplemented
